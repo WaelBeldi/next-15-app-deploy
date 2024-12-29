@@ -1,10 +1,10 @@
 import { NextResponse } from 'next/server'
 import clientPromise from '@/app/lib/mongodb'
-import { ObjectId } from 'mongodb'
+import { MongoClient, ObjectId } from 'mongodb'
 
 export async function GET(request, { params }) {
   try {    
-    const client = await clientPromise
+    const client = await MongoClient.connect(process.env.MONGODB_URI)
     const db = client.db("products")
     const product = await db.collection("inventory").findOne({ _id: new ObjectId(params.id) })    
     return NextResponse.json(product)
