@@ -1,4 +1,13 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+const nextConfig = {
+  images: {
+    // domains: ['www.sbsinformatique.com'],
+    remotePatterns: [
+      {
+        hostname: 'www.sbsinformatique.com'
+      },
+    ],
+  },
+};
 
 export default nextConfig;
